@@ -10,9 +10,12 @@ const TopicsList = () => {
   useEffect(() => {
     const fetchTopics = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/topics", {
-          cache: "no-cache",
-        });
+        const res = await fetch(
+          "https://next-crud-pi-nine.vercel.app/api/topics",
+          {
+            cache: "no-cache",
+          }
+        );
 
         if (!res.ok) {
           throw new Error("Failed to fetch topics");
@@ -33,9 +36,12 @@ const TopicsList = () => {
     const confirmed = confirm("Are you sure to delete?");
 
     if (confirmed) {
-      const res = await fetch(`http://localhost:3000/api/topics/${_id}`, {
-        method: "DELETE",
-      }).then(() => {
+      const res = await fetch(
+        `https://next-crud-pi-nine.vercel.app/api/topics/${_id}`,
+        {
+          method: "DELETE",
+        }
+      ).then(() => {
         let newTopics = topics.filter((topic) => topic._id !== _id);
         setTopics(newTopics);
       });

@@ -13,9 +13,12 @@ const EditTopic = ({ params }) => {
 
   const getTopicById = async (id) => {
     try {
-      const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
-        cache: "no-cache",
-      });
+      const res = await fetch(
+        `https://next-crud-pi-nine.vercel.app/api/topics/${id}`,
+        {
+          cache: "no-cache",
+        }
+      );
       if (!res.ok) {
         throw new Error();
       }
@@ -38,13 +41,16 @@ const EditTopic = ({ params }) => {
   const handleUpdateTopic = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ newtitle, newdescription }),
-      });
+      const res = await fetch(
+        `https://next-crud-pi-nine.vercel.app/api/topics/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ newtitle, newdescription }),
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Failed to update topic");
